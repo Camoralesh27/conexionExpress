@@ -1,0 +1,125 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.nosotros {
+  background-color: v.$white;
+  padding-block: clamp(5rem, 9vw, 8rem);
+
+  /* CONTENEDOR PRINCIPAL */
+  &__container {
+    max-width: 120rem;
+    margin-inline: auto;
+    padding-inline: clamp(2rem, 4vw, 4rem);
+
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: clamp(3rem, 5vw, 6rem);
+    align-items: center;
+
+    /* En phone: UNA sola columna */
+    @include m.phone {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+
+  /* COLUMNA DE TEXTO */
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+
+    @include m.phone {
+      align-items: center;
+      text-align: center;
+    }
+  }
+
+  &__heading {
+    font-weight: 700;
+    line-height: 1.2;
+    color: v.$black;
+    margin-bottom: 0.5rem;
+   /*  font-size: clamp(2.4rem, 3vw, 3.2rem); */
+  }
+
+  &__text {
+    margin: 0;
+    line-height: 1.7;
+    color: v.$gray-5;
+    font-size: clamp(1.5rem, 1.8vw, 1.7rem);
+    max-width: 60ch;
+
+    &--blue {
+      color: v.$primary-2;
+      font-weight: 600;
+    }
+  }
+
+  &__mission,
+  &__vision {
+    margin-top: 1rem;
+  }
+
+  &__subtitle {
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+    color: v.$black;
+    font-size: clamp(1.8rem, 2.2vw, 2rem);
+
+    &--blue {
+      color: v.$primary-2;
+    }
+  }
+
+  &__link {
+    margin-top: 1.5rem;
+    display: inline-block;
+    font-weight: 600;
+    font-size: clamp(1.4rem, 1.7vw, 1.6rem);
+    color: v.$primary-2;
+    text-decoration: none;
+    transition: transform 0.25s ease, color 0.25s ease;
+
+    &:hover {
+      color: v.$primary-1;
+      transform: translateX(0.4rem);
+    }
+  }
+
+  /* COLUMNA DE IMAGEN */
+  &__image-wrapper {
+    width: 100%;
+    justify-self: end;
+    /* para que la tarjeta no se haga gigante en pantallas muy grandes */
+    max-width: 40rem;
+
+    @include m.phone {
+      /* En phone: imagen arriba y centrada */
+      order: -1;
+      justify-self: center;
+      max-width: 28rem;
+    }
+  }
+
+  &__image {
+    background: url();
+    display: block;
+    width: 100%;
+    height: auto;          // respeta la proporción de la foto
+    object-fit: cover;
+    object-position: center;
+    border-radius: v.$border-radius;
+    box-shadow: v.$box-shadow;
+  }
+
+  /* AJUSTES EXTRA PARA PHONE */
+  @include m.phone {
+    &__heading,
+    &__subtitle,
+    &__text,
+    &__link {
+      text-align: center;
+    }
+  }
+}

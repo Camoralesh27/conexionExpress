@@ -1,0 +1,181 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.planes {
+  background-color: v.$white;
+  padding-block: clamp(5rem, 9vw, 8rem);
+
+  &__container {
+    max-width: 120rem;
+    margin-inline: auto;
+    padding-inline: clamp(2rem, 4vw, 4rem);
+  }
+
+  /* HEADER */
+  &__header {
+    text-align: center;
+    margin-bottom: clamp(4rem, 7vw, 6rem);
+  }
+
+  &__heading {
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+    color: v.$black;
+    font-size: clamp(2.4rem, 3vw, 3.2rem);
+
+    &--blue {
+      color: v.$primary-2;
+    }
+  }
+
+  &__description {
+    font-size: clamp(1.5rem, 1.8vw, 1.7rem);
+    color: v.$gray-5;
+    max-width: 60rem;
+    margin-inline: auto;
+    line-height: 1.6;
+  }
+
+  /* GRID DE PLANES */
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(2rem, 3vw, 3rem);
+    margin-bottom: clamp(4rem, 6vw, 5rem);
+
+    @include m.phone {
+      grid-template-columns: 1fr;
+      max-width: 40rem;
+      margin-inline: auto;
+    }
+
+    @include m.tablet {
+      grid-template-columns: 1fr;
+      max-width: 40rem;
+      margin-inline: auto;
+    }   
+  }
+
+  /* TARJETAS */
+  &__card {
+    background-color: v.$gray-1;
+    border-radius: v.$border-radius;
+    padding: clamp(2.8rem, 3.5vw, 3.5rem) clamp(2rem, 2.5vw, 2.5rem);
+    display: flex;
+    flex-direction: column;
+    gap: 2.2rem;
+    box-shadow: v.$box-shadow;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: v.$box-shadow-hover;
+    }
+
+    /* PLAN DESTACADO (CENTRAL) */
+    &--featured {
+      background-color: v.$primary-2;
+      color: v.$white;
+      box-shadow: v.$box-shadow-hover;
+
+      // un poco más alto visualmente solo en desktop
+      &--featured-up {
+        transform: translateY(-8px);
+
+        &:hover {
+          transform: translateY(-12px);
+          box-shadow: v.$box-shadow-hover;
+        }
+      }
+
+      .planes__card-title {
+        color: v.$white;
+      }
+
+      .planes__price-amount {
+        color: v.$white;
+      }
+
+      .planes__price-period {
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .planes__feature {
+        color: v.$white;
+
+        i {
+          color: v.$white;
+        }
+      }
+    }
+  }
+
+  &__card-title {
+    margin: 0;
+    text-align: center;
+    font-weight: 600;
+    color: v.$black;
+    font-size: clamp(1.7rem, 2vw, 1.9rem);
+  }
+
+  /* PRECIO */
+  &__price {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  &__price-amount {
+    font-size: clamp(3.8rem, 4.5vw, 5rem);
+    font-weight: 700;
+    line-height: 1;
+    color: v.$primary-2;
+  }
+
+  &__price-period {
+    font-size: clamp(1.4rem, 1.7vw, 1.6rem);
+    color: v.$gray-5;
+    font-weight: 400;
+  }
+
+  /* LISTA DE FEATURES */
+  &__features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+  }
+
+  &__feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    font-size: clamp(1.4rem, 1.7vw, 1.6rem);
+    color: v.$gray-5;
+    line-height: 1.5;
+
+    i {
+      color: #28a745;
+      font-size: 1.8rem;
+      flex-shrink: 0;
+      margin-top: 0.2rem;
+    }
+  }
+
+  /* CTA FINAL */
+  &__cta {
+    text-align: center;
+  }
+
+  &__button {
+    @include m.boton-solid(v.$primary-2, v.$white);
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: clamp(1.7rem, 2vw, 2rem);
+    padding: clamp(1.2rem, 1.5vw, 1.5rem) clamp(2.4rem, 3vw, 3rem);
+  }
+}

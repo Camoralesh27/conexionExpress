@@ -1,0 +1,30 @@
+{
+  "name": "conexion-express",
+  "version": "1.0.0",
+  "description": "Website Conexion Express, servicios de wisp",
+  "type": "module",
+  "main": "gulpfile.js",
+  "scripts": {
+    "sass": "sass --watch src/scss:build/css",
+    "dev": "gulp",
+    "build": "gulp --tasks=default"
+  },
+  "keywords": [
+    "SASS",
+    "Gulp",
+    "NPM"
+  ],
+  "author": "StudioIchi",
+  "license": "ISC",
+  "devDependencies": {
+    "glob": "^10.4.2",
+    "gulp": "^5.0.0",
+    "gulp-file-include": "^2.3.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-sass": "^5.1.0",
+    "gulp-terser": "^2.1.0",
+    "sass": "^1.83.1",
+    "sharp": "^0.33.4"
+  },
+  "packageManager": "pnpm@10.23.0"
+}

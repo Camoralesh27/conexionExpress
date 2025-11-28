@@ -1,0 +1,117 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: calc(100vh - 14rem); // o la altura que quieras
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  color: v.$white;
+}
+
+/* Imagen de fondo */
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  picture,
+  .hero__image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+/* Oscurecer lado izquierdo, dejar derecha más clara */
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.70),
+    rgba(0, 0, 0, 0.45),
+    rgba(0, 0, 0, 0.10),
+    rgba(0, 0, 0, 0.0)
+  );
+}
+
+/* Contenedor central tipo .container */
+.hero__container {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 120rem;
+  margin-inline: auto;
+  padding: clamp(4rem, 7vw, 6rem) clamp(2rem, 6vw, 4rem);
+  display: flex;
+  align-items: center;
+}
+
+/* Caja de texto a la izquierda */
+.hero__content {
+  max-width: 48rem;
+  text-align: left;
+}
+
+/* Título */
+.hero__title {
+  margin-bottom: 1.5rem;
+  color: v.$white;
+  line-height: 1.2;
+  font-size: clamp(3rem, 4vw, 4.4rem);
+  text-transform: none;
+}
+
+/* Subtítulo */
+.hero__subtitle {
+    margin: 0 0 3rem 0;
+    text-align: left;
+    color: v.$gray-1;
+    font-weight: 400;
+    font-size: clamp(1.6rem, 2vw, 1.9rem);
+}
+
+/* Botones en fila */
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.hero__button {
+  @include m.boton-solid(v.$primary-2, v.$white);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+
+  &--outline {
+    @include m.boton-outline(v.$primary-2, v.$white);
+  }
+}
+
+/* Ajustes para móvil */
+@include m.phone {
+  .hero {
+    min-height: 70vh; // si quieres menos alto en móvil
+  }
+
+  .hero__container {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .hero__content {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .hero__actions {
+    justify-content: center;
+  }
+}
