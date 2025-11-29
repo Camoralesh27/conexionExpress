@@ -21,6 +21,11 @@
       grid-template-columns: 1fr;
       gap: 3rem;
     }
+
+    @include m.tablet {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
   }
 
   /* COLUMNA DE TEXTO */
@@ -30,6 +35,11 @@
     gap: 1.6rem;
 
     @include m.phone {
+      align-items: center;
+      text-align: center;
+    }
+
+    @include m.tablet {
       align-items: center;
       text-align: center;
     }
@@ -90,28 +100,67 @@
   /* COLUMNA DE IMAGEN */
   &__image-wrapper {
     width: 100%;
+    height: 100%;
     justify-self: end;
-    /* para que la tarjeta no se haga gigante en pantallas muy grandes */
+    max-width: 40rem;
+
+    /* 🔥 Fondo responsivo con AVIF → WebP → JPG */
+    background-image: url("../img/nosotros.jpg"); // fallback
+    background-image: image-set(
+      url("../img/nosotros.avif") type("image/avif"),
+      url("../img/nosotros.webp") type("image/webp"),
+      url("../img/nosotros.jpg") type("image/jpeg")
+    );
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    border-radius: v.$border-radius;
+    box-shadow: v.$box-shadow;
+
+    @include m.phone {
+      justify-self: center;
+      max-width: 28rem;
+      min-height: 32rem;  // altura para que no quede chiquita en phone
+    }
+
+    @include m.tablet {
+      justify-self: center;
+      max-width: 28rem;
+      min-height: 32rem;  // altura para que no quede chiquita en phone
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /* width: 100%;
+    justify-self: end;
     max-width: 40rem;
 
     @include m.phone {
-      /* En phone: imagen arriba y centrada */
       order: -1;
       justify-self: center;
       max-width: 28rem;
-    }
+    } */
   }
 
-  &__image {
+  /* &__image {
     background: url();
     display: block;
     width: 100%;
-    height: auto;          // respeta la proporción de la foto
+    height: auto;          z
     object-fit: cover;
     object-position: center;
     border-radius: v.$border-radius;
     box-shadow: v.$box-shadow;
-  }
+  } */
 
   /* AJUSTES EXTRA PARA PHONE */
   @include m.phone {
